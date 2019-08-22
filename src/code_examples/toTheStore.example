@@ -1,0 +1,13 @@
+LOAD_DATA: state => {
+    const { id, dispatch } = action as TLoadDataAction
+
+    actionCreators.loadData(id, dispatch)
+
+    return {
+      ...state,
+      dataForm: {
+        ...getInitialState().dataForm,
+        isLoading: true
+      }
+    }
+  }

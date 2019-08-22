@@ -1,0 +1,4 @@
+const AppContext = createContext<{
+  state: IAppState
+  dispatch: TAppDispatch
+}>({ state: getInitialState(), dispatch: () => undefined 

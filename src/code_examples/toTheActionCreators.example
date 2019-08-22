@@ -1,0 +1,22 @@
+loadData: async (id: string, dispatch) => {
+    try {
+      const data = await someApiLink.getData()
+
+      dispatch({
+        type: 'LOAD_DATA_SUCCESS',
+        data
+      })
+    } catch (error) {
+      if (error instanceof NotFoundError) {
+        dispatch({
+          type: 'LOAD_DATA_FAILED',
+          errorMessage: 'Error finding data'
+        })
+      } else {
+        dispatch({
+          type: 'LOAD_Data_FAILED',
+          errorMessage: 'Error retrieving data'
+        })
+      }
+    }
+  },

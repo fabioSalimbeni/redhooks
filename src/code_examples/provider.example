@@ -1,0 +1,16 @@
+const AppContextProvider = ({
+  children,
+  initState = getInitialState()
+}) => {
+  const [state, dispatch] = useReducer(reducer, initState)
+
+  return (
+      <AppContext.Provider value={{ state, dispatch }}>
+        {children}
+      </AppContext.Provider>
+  )
+}
+
+const useAppContext = () => useContext(AppContext)
+
+export { userAppContext, AppContextProvider }

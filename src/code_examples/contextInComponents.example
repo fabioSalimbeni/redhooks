@@ -1,0 +1,45 @@
+import { useAppContext } from '../../views/AppContext'
+
+// Placeholder for the content of the filter panel
+const FiltersPanel: React.FC = () => {
+  const {
+    state: {
+      home: { isFiltersExpanded }
+    }
+  } = useAppContext()
+
+  return (
+    <Collapse isOpen={isFiltersExpanded} data-test-filter-wrapper>
+      <div className='container-fluid' id='filters'>
+        <div className='row'>
+          <div className='col'>
+            <div className='card bg-light mb-3'>
+              <div className='card-header'>
+                <p className='mb-0'>
+                  <strong>Filters</strong>
+                </p>
+              </div>
+              <div className='card-body'>
+                <div className='placeholder' style={{ height: '20em' }} />
+              </div>
+              <div className='card-footer'>
+                <button className='btn btn-primary mr-1' type='button'>
+                  Apply filters
+                </button>
+                <button
+                  className='btn btn-secondary'
+                  type='button'
+                  id='cancel-filter-button'
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Collapse>
+  )
+}
+
+export default FiltersPanel

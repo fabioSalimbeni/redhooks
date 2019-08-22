@@ -1,0 +1,33 @@
+const homeReducers = () => true;
+const newState = {};
+
+const reducer = (state = getInitialState(), action) => {
+  const actionList = {
+    ...homeReducers(action)
+  };
+
+  if (!(action.type in actionList)) return state;
+  return actionList[action.type](state);
+};
+
+const initialState = {
+  home: {
+    isLoading: true
+  },
+  intelForm: {
+    id: undefined,
+    version: undefined,
+    headline: "",
+    body: "",
+    status: "DRAFT",
+    isSaving: false,
+    isLoading: true
+  }
+};
+
+const getInitialState = () => ({
+  ...initialState,
+  ...newState
+});
+
+export { reducer, getInitialState };

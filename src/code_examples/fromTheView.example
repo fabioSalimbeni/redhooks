@@ -1,0 +1,22 @@
+const LoadData = props => {
+  const { state, dispatch } = useAuthorContext()
+
+  const {
+    dataForm: { isLoading }
+  } = state
+
+  useEffect(() => {
+    dispatch({ type: 'LOAD_DATA', id: props.match.params.id, dispatch })
+  }, [])
+
+  return isLoading ? (
+    <StyledLoaderContainer
+      className='d-flex align-items-center position-absolute'
+      data-test-styled-loader
+    >
+      <StyledLoader />
+    </StyledLoaderContainer>
+  ) : (
+    <DataForm {...props} />
+  )
+}
